@@ -21,3 +21,34 @@ VALUES ('Burlesque', 119, 'Drama', 6.4, 'PG-13');
 
 INSERT INTO movies (title, runtime, genre, imdb_score, rating)
 VALUES ('Beetlejuice', 92, 'Comedy', 7.5, 'PG');
+
+SELECT * FROM MOVIES
+WHERE genre = 'Sci-Fi';
+
+SELECT * FROM MOVIES
+WHERE imdb_score >= 6.5;
+
+SELECT * FROM MOVIES
+WHERE rating = 'G' OR rating = 'PG' AND runtime < 100;
+
+SELECT * FROM MOVIES
+WHERE imdb_score < 7.5 GROUP BY genre, id;
+
+UPDATE movies
+SET rating = 'R'
+WHERE title = 'Starship Troopers';
+
+SELECT id, rating FROM movies
+WHERE genre = 'Horror' OR genre = 'Documentary';
+
+SELECT MIN(imdb_score), MAX(imdb_score), AVG(imdb_score), rating
+FROM movies
+GROUP BY rating;
+
+SELECT MIN(imdb_score), MAX(imdb_score), AVG(imdb_score), rating
+FROM movies
+GROUP BY rating
+HAVING COUNT(*)>1;
+
+DELETE FROM movies
+WHERE rating = 'R';
